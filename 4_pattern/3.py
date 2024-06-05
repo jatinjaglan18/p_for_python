@@ -14,7 +14,9 @@ Constraints
 0 <= N <= 26
 
 '''
-k = chr(ord('A'))
+#ord is used to get ASCII value of characters 
+#chr is used to get character associated with ASCII value
+#k = chr(ord('A')) 
 
 n = int(input())
 
