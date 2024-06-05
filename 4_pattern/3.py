@@ -14,7 +14,7 @@ Constraints
 0 <= N <= 26
 
 '''
-#k = chr(ord('A'))
+k = chr(ord('A'))
 
 n = int(input())
 
