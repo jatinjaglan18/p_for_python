@@ -85,4 +85,3 @@ for row in range(n):
         sp += 1
         st -= 2
     print()
-
