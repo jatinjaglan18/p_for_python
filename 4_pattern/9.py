@@ -1,6 +1,7 @@
 n = int(input())
 
 '''
+n = 4
 1
 2 3
 4 5 6
@@ -15,6 +16,8 @@ for i in range(n):
     print()
 
 '''
+n = 5
+
 0 
 1 1 
 2 3 5 
@@ -33,6 +36,7 @@ for i in range(n):
     print()
 
 '''
+n = 5
 1
 1 1
 1 2 1
