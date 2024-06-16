@@ -25,7 +25,6 @@ for i in range(n-2,-1,-1):
         stack.pop()
         if len(stack) == 0:
             res[i] = -1
-            stack.append(arr[i])
             break
         
     else:
