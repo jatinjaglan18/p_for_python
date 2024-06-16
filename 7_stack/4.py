@@ -33,3 +33,29 @@ for i in range(n-2,-1,-1):
     stack.append(arr[i])
 
 print(res)
+
+#Alternate 
+res = array('i',[0 for i in range(n)])
+stack = []
+stack.append(0)
+
+for i in range(1,len(arr)):
+    while arr[stack[len(stack)-1]] < arr[i]:
+        res[stack[len(stack)-1]] = arr[i]
+        stack.pop()
+
+        if len(stack) == 0 :
+            stack.append(i)
+            break
+    else:
+        stack.append(i)
+
+if len(stack) != 0:
+    while len(stack) != 0:
+        res[stack[len(stack)-1]] = -1
+        stack.pop()
+
+print(res)
+
+for i in range(len(arr)):
+    print('NGETR',arr[i], 'is: ', res[i])
