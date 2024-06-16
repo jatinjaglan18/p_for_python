@@ -21,13 +21,11 @@ res[-1] = -1
 
 for i in range(n-2,-1,-1):
     
-    while arr[i] > stack[len(stack)-1]:
+    while arr[i] >= stack[len(stack)-1]:
         stack.pop()
         if len(stack) == 0:
+            res[i] = -1
             break
-        
-    if len(stack) == 0:
-        res[i] = -1
         
     else:
         res[i] = stack[len(stack)-1]
