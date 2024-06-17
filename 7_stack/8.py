@@ -9,8 +9,6 @@ def perecedence(opr):
         return 2
     elif opr == '/':
         return 2
-    else:
-        return 0
     
 def operations(a1, a2, opr):
     if opr == '+':
@@ -51,7 +49,7 @@ for i in n:
     elif i == '+' or i == '-' or i == '*' or i == '/':
 
         #opr wants to solve high or equal precendence 
-        while len(stack_opr) != 0 and i != '(' and perecedence(i) <= perecedence(stack_opr[-1]):
+        while len(stack_opr) != 0 and stack_opr[-1] != '(' and perecedence(i) <= perecedence(stack_opr[-1]):
             a2 = stack_oprnd.pop()
             a1 = stack_oprnd.pop() 
             opr = stack_opr.pop()
