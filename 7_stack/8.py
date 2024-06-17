@@ -51,15 +51,13 @@ for i in n:
     elif i == '+' or i == '-' or i == '*' or i == '/':
 
         #opr wants to solve high or equal precendence 
-        #if len(stack_opr) != 0:
         while len(stack_opr) != 0 and i != '(' and perecedence(i) <= perecedence(stack_opr[-1]):
             a2 = stack_oprnd.pop()
             a1 = stack_oprnd.pop() 
             opr = stack_opr.pop()
             val = operations(a1,a2,opr)
             stack_oprnd.append(val)
-            if len(stack_opr) == 0:
-                break
+
 
         #opr push
         stack_opr.append(i)
