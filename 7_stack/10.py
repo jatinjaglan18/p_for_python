@@ -1,16 +1,6 @@
 #Postfix Evaluation and conversion
 n = input()
 
-def perecedence(opr):
-    if opr == '+':
-        return 1
-    elif opr == '-':
-        return 1
-    elif opr == '*':
-        return 2
-    elif opr == '/':
-        return 2
-    
 def operations(a1, a2, opr):
     if opr == '+':
         return a1 + a2
