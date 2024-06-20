@@ -51,8 +51,8 @@ class Stack:
         return len(self.arr)
     
     def see(self):
-        for i in self.arr:
-            print(self.arr[-i], end = ' ')
+        for i in range(len(self.arr)-1,-1,-1):
+            print(self.arr[i], end = ' ')
         print()
     
     def peek(self):
