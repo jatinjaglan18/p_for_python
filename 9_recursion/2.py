@@ -9,7 +9,7 @@ def fac(n):
     return res
 print(fac(n))
 
-#Linear Power
+#Linear Power o(n)
 def linear_power(x,n):
     if n == 0:
         return 1
@@ -20,6 +20,7 @@ x = int(input())
 n = int(input())
 print(linear_power(x,n))
 
+#o(log(n))
 def log_power(x,n):
     if n == 0:
         return 1
