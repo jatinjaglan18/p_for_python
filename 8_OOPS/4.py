@@ -269,20 +269,6 @@ def MergeSort(h,t):
     res = MergeSortSort(fsh,ssh)
     return res
 
-
-l = LinkedList()
-l.addLast(1)
-l.addLast(2)
-l.addLast(5)
-l.addLast(6)
-l.addLast(7)
-l.addLast(11)
-l.addLast(13)
-l.addLast(12)
-
-
-l.display()
-
 def remove_duplicates(l):
     i = l.head
     j = l.head.next
@@ -310,5 +296,77 @@ def odd_even(l):
     o.tail.next = e.head
     return o
 
-z = odd_even(l)
-z.display()
+def k_reverse(l,k):
+    p = LinkedList()
+    c = LinkedList()
+    s = l.size
+    while s >= k:
+        for i in range(k):
+            c.addFirst(l.head.data)
+            l.removeFirst()
+            s -= 1
+        if p.is_empty():
+            p = c
+        else:
+            p.tail.next = c.head
+            p.tail = c.tail
+        p.size += k
+        c = LinkedList()
+    while s != 0:
+        p.addLast(l.head.data)
+        l.removeFirst()
+        s -= 1
+    return p
+
+#Iterative approach only data
+def diplay_reverse(l):
+    stack = []
+    temp = l.head
+    while temp != None:
+        stack.append(temp.data)
+        temp = temp.next
+    while len(stack) != 0:
+        print(stack.pop(), end = ' ')
+    print()
+
+#Recursive approach only data
+def d_r(h):
+    if h.next == None:
+        bres = [h.data]
+        return bres
+    res = []
+    l = d_r(h.next)
+    res.append(h.data)
+    for i in l:
+        res.append(i)
+    return res
+
+def diplay_revers_recursive(l):
+    res = d_r(l.head)
+    for i in res:
+        print(i,end =' ')
+
+#Reverse LinkedList
+def R_l_r(h):
+    if h.next == None:
+        return
+    R_l_r(h.next)
+    h.next.next = h
+
+def reverse_Linked_list(l):
+    R_l_r(l.head)
+    l.head.next = None
+    l.tail,l.head = l.head, l.tail
+
+l= LinkedList()
+l.addLast(4)
+l.addLast(3)
+l.addLast(2)
+l.addLast(1)
+l.display()
+print(l.head.data)
+print(l.tail.data)
+reverse_Linked_list(l)
+l.display()
+print(l.head.data)
+print(l.tail.data)
