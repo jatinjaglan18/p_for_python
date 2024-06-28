@@ -12,3 +12,14 @@ def subSequence(s):
         res.append(ch + i)
     return res
 print(subSequence(str))
+
+#print subsequence
+def subsequence(ques, ans):
+    if len(ques) == 0:
+        print(ans)
+        return
+    ch = ques[0]
+    subsequence(ques[1:],ans + ch)
+    subsequence(ques[1:],ans + '')
+
+subsequence(str,'')
