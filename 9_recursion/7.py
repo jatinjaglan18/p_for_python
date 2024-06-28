@@ -16,3 +16,16 @@ def keyPad(s):
 
 print(keyPad(s))
 
+#Print Keypad Combination
+def print_keypad(ques,ans):
+    if len(ques) == 0:
+        print(ans)
+        return 
+    
+    ch = int(ques[0])
+    for i in arr[ch]:
+
+        print_keypad(ques[1:], ans + i)
+
+
+print_keypad(s,'')
