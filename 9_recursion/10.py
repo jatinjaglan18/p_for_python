@@ -31,3 +31,27 @@ def mazePathsjumps(sr,sc,dr,dc):
     return l
 
 print(mazePathsjumps(1,1,n,m))
+
+#Print maze paths with jumps
+
+def print_mazePathsjumps(sr,sc,dr,dc,path):
+    if sc == dc and sr == dr :
+        print(path)
+        return 
+    
+    #Horizonatal
+    if sc < dc:
+        for js in range(1,dc):
+            print_mazePathsjumps(sr,sc+js,dr,dc,path+'h'+str(js))
+
+    #Vertical
+    if sr < dr:
+        for js in range(1,dr):
+            print_mazePathsjumps(sr+js,sc,dr,dc,path+'v'+str(js))
+
+    #Diagonal
+    if sc < dc and sr < dr :
+        for js in range(1,dc):
+            print_mazePathsjumps(sr+js,sc+js,dr,dc,path+'d'+str(js))
+
+print_mazePathsjumps(1,1,n,m,'')
