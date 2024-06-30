@@ -359,14 +359,32 @@ def reverse_Linked_list(l):
     l.tail,l.head = l.head, l.tail
 
 l= LinkedList()
+l.addLast(5)
 l.addLast(4)
 l.addLast(3)
 l.addLast(2)
 l.addLast(1)
 l.display()
-print(l.head.data)
-print(l.tail.data)
-reverse_Linked_list(l)
+
+
+def reverse_list(l):
+    global left
+    left = l.head
+    r_help(l.head,0)
+
+def r_help(right,floor):
+    if right == None:
+        return
+    
+    global left
+    r_help(right.next,floor+1)
+    
+    if floor >= l.size // 2:
+        temp = left.data
+        left.data = right.data 
+        right.data = temp
+        left = left.next
+    
+
+reverse_list(l)
 l.display()
-print(l.head.data)
-print(l.tail.data)
