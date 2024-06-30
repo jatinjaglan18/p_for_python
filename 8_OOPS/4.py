@@ -430,5 +430,49 @@ def fold_helper(right,floor):
         l.tail.next = None
         
 
-fold(l)
-l.display()
+def add_two_linkedlist(l1,l2):
+    l = LinkedList()
+    oc = helper(l1.head,l2.head,l1.size,l2.size,l)
+    if oc != 0:
+        l.addFirst(oc)
+    return l
+
+def helper(h1,h2,p1,p2,l):
+    if h1 == None and h2 == None:
+        return 0
+    if p1 == p2:
+        oc = helper(h1.next,h2.next,p1-1,p2-1,l)
+        val = h1.data + h2.data + oc
+        c = val // 10 
+        a_val = val % 10
+        l.addFirst(a_val)
+        return c
+    
+    elif p1 > p2:
+        oc = helper(h1.next,h2,p1-1,p2,l)
+        val = h1.data + oc
+        c = val // 10 
+        a_val = val % 10
+        l.addFirst(a_val)
+        return c 
+
+    elif p2 > p1:
+        oc = helper(h1,h2.next,p1,p2-1,l)
+        val = h2.data + oc
+        c = val // 10 
+        a_val = val % 10
+        l.addFirst(a_val)
+        return c 
+
+    
+
+
+l1 = LinkedList()
+l1.addLast(8)
+l1.addLast(1)
+l1.display()
+l2 = LinkedList()
+l2.addLast(9)
+l2.addLast(9)
+z = add_two_linkedlist(l1,l2)
+z.display()
