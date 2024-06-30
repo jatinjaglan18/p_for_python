@@ -359,8 +359,9 @@ def reverse_Linked_list(l):
     l.tail,l.head = l.head, l.tail
 
 l= LinkedList()
-l.addLast(5)
-l.addLast(4)
+
+l.addLast(1)
+l.addLast(2)
 l.addLast(3)
 l.addLast(2)
 l.addLast(1)
@@ -386,5 +387,25 @@ def r_help(right,floor):
         left = left.next
     
 
-reverse_list(l)
-l.display()
+def palindrome(l):
+    global left
+    left = l.head
+    return palindrome_helper(l.head)
+
+def palindrome_helper(right):
+    if right == None:
+        return True
+    
+    global left
+    res = palindrome_helper(right.next)
+    
+    if left.data != right.data:
+        res = False
+        return res
+    
+    else:
+        left = left.next
+
+    return res
+    
+print(palindrome(l))
