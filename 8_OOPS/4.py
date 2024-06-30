@@ -363,8 +363,9 @@ l= LinkedList()
 l.addLast(1)
 l.addLast(2)
 l.addLast(3)
-l.addLast(2)
-l.addLast(1)
+l.addLast(4)
+l.addLast(5)
+l.addLast(6)
 l.display()
 
 
@@ -402,10 +403,32 @@ def palindrome_helper(right):
     if left.data != right.data:
         res = False
         return res
-    
     else:
         left = left.next
-
     return res
     
-print(palindrome(l))
+
+
+def fold(l):
+    global left
+    left = l.head
+    fold_helper(l.head,0)
+
+def fold_helper(right,floor):
+    if right == None:
+        return
+    
+    global left
+    fold_helper(right.next,floor+1)
+    if floor > l.size // 2:
+        new_node = right
+        new_node.next = left.next
+        left.next = new_node
+        left = new_node.next
+    elif floor == l.size // 2:
+        l.tail = right
+        l.tail.next = None
+        
+
+fold(l)
+l.display()
