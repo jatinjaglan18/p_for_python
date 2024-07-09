@@ -13,3 +13,21 @@ def e(x,n):
     return res
 
 print(e(4,15))
+n = 15
+x = 4
+s = 1
+while n > 0:
+    s = (1 + (x * s/ n))
+    n -= 1
+
+print(s)
+
+s = 1
+def ex(x,n):
+    global s
+    if n == 0:
+        return s
+    s = (1+(x*s/n))
+    return ex(x,n-1)
+
+print(ex(4,15))
