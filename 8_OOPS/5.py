@@ -71,3 +71,90 @@ def height(node):
 
 print(height(a))
     
+def traversal(node):
+
+    print('Node Pre',node.data)
+    for i in node.children:
+        print('Edge Pre', node.data, '--', i.data)
+        traversal(i)
+        print('Edge Post', node.data, '--', i.data)
+    print('Node Post',node.data)
+
+#traversal(a)
+
+def level_order_traversal(node):
+    q = [node]
+    while len(q) != 0:
+        v = q.pop(0)
+        print(v.data, end = ' ')
+        for i in v.children:
+            q.append(i)
+
+level_order_traversal(a)
+
+print()
+
+def line_wise(node):
+    q = [node]
+    cq = []
+
+    while len(q) != 0 or len(cq) != 0:
+        v = q.pop(0)
+        print(v.data,end = ' ')
+        
+        for i in v.children:
+            cq.append(i)
+
+        if len(q) == 0 :
+            print()
+            q = cq
+            cq  =[]
+
+line_wise(a)
+
+#Alternate
+def line_wise(node):
+    q = [node]
+    q.append(None)
+
+    while len(q) != 0:
+        v = q.pop(0)
+        if v != None:
+            print(v.data,end=' ')
+            for i in v.children:
+                q.append(i)
+        else:
+            if len(q) != 0:
+                print()
+                q.append(None)
+        
+            
+
+line_wise(a)
+def zig_zag(node):
+    s = [node]
+    cs =[]
+    flag = True
+    while len(s) != 0 or len(cs) != 0:
+        v = s.pop()
+        print(v.data, end=' ')
+
+        if flag:
+            for i in v.children:
+                cs.append(i)
+        else:
+            for i in range(len(v.children)-1,-1,-1):
+                cs.append(v.children[i])
+    
+
+        if len(s) == 0:
+            print()
+            s= cs
+            cs =[]
+            if flag:
+                flag = False
+            else:
+                flag = True
+
+#zig_zag(a)
+
