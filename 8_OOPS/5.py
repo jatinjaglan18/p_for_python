@@ -5,8 +5,8 @@ class Node:
         self.data = val
         self.children = []
     
-arr = [10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,150,-1,-1,-1]
-
+#arr = [10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,150,-1,-1,-1]
+arr = [10,20,-1,30,50,-1,60,-1,-1,40,-1,-1]
 def genrateTree(arr):
     root = Node(None)      
     stack = []
@@ -20,8 +20,8 @@ def genrateTree(arr):
             else:
                 root = new_node
             stack.append(new_node)
-
-    display(root)
+    
+    return root
 
 def display(node):
     string = str(node.data) + '-->' 
@@ -32,4 +32,23 @@ def display(node):
     for i in node.children:
         display(i)  
 
-genrateTree(arr)
+s = 0
+def size(node):
+    s  = 0
+    #global s
+    for i in node.children:
+        cs = size(i)
+        #print(cs)
+        s  += cs
+    s += 1
+    return s
+
+
+a = genrateTree(arr)
+display(a)
+print(size(a))
+
+
+
+
+    
