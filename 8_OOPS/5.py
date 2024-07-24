@@ -203,4 +203,61 @@ def find(node,x):
         if flag:
             return True
     return False    
-print(find(a,99))
+
+#print(find(a,99))
+
+def node_to_root(node,x):
+    if node.data == x:
+        arr = [node.data]
+        return arr
+    for i in node.children:
+        a = node_to_root(i,x)
+        if len(a) > 0:
+            a.append(node.data)
+            return a
+
+    return []
+
+#print(node_to_root(a,110))
+
+def lowest_common(node,x,y):
+    a1 = node_to_root(node,x)
+    a2 = node_to_root(node,y)
+    
+    i = len(a1)-1
+    j = len(a2)-1
+
+    while i >= 0 and j >= 0 and a1[i] == a2[j]:
+       i -= 1
+       j -= 1
+        
+    return a1[i+1]
+        
+print(lowest_common(a,40,20))
+
+def distance(node,x,y):
+    a1= node_to_root(node,x)
+    a2 = node_to_root(node,y)
+    i = len(a1)-1
+    j = len(a2)-1
+
+    while i >= 0 and j >= 0 and a1[i] == a2[j]:
+       i -= 1
+       j -= 1
+
+    i += 1
+    j += 1
+    '''path = 0
+    while i >= 0:
+        path += 1
+        i -= 1
+    
+    while j >= 0:
+        path += 1
+        j -= 1'''
+    
+    return i + j
+
+print(distance(a,50,150))
+
+
