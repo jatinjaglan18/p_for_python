@@ -6,7 +6,7 @@ class Node:
         self.children = []
 
 arr = [10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,150,-1,-1,-1]
-#sarr = [10,20,-1,30,50,-1,60,-1,-1,40,-1,-1]
+sarr = [10,20,-1,30,50,-1,60,-1,-1,40,-1,-1]
 def genrateTree(arr):
     root = Node(None)      
     stack = []
@@ -258,6 +258,33 @@ def distance(node,x,y):
     
     return i + j
 
-print(distance(a,50,150))
+#print(distance(a,50,150))
+
+def same_shape(node1, node2):
+    if len(node1.children) != len(node2.children):
+        return False
+    else:
+        for i in range(len(node1.children)):
+            flag = same_shape(node1.children[i],node2.children[i])
+            if flag == False:
+                return False
+    return True
 
 
+def ismirror(node1,node2):
+    if len(node1.children) != len(node2.children):
+        return False
+    else:
+        for i in range(len(node1.children)):
+            j = len(node2.children) -1 - i
+
+            flag = ismirror(node1.children[i],node2.children[j])
+            if flag == False:
+                return False
+            
+        return True
+    
+c = genrateTree(arr)
+mirror_tree(c)
+display(c)
+print(ismirror(a,c))
