@@ -284,7 +284,8 @@ def ismirror(node1,node2):
             
         return True
     
-c = genrateTree(arr)
-mirror_tree(c)
-display(c)
-print(ismirror(a,c))
+def issymmetric(node):
+    return ismirror(node,node)
+
+b = genrateTree(sarr)
+print(issymmetric(b))
