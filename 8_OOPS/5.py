@@ -5,8 +5,8 @@ class Node:
         self.data = val
         self.children = []
 
-#arr = [10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,150,-1,-1,-1]
-arr = [10,20,-1,30,50,-1,60,-1,-1,40,-1,-1]
+arr = [10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,150,-1,-1,-1]
+#sarr = [10,20,-1,30,50,-1,60,-1,-1,40,-1,-1]
 def genrateTree(arr):
     root = Node(None)      
     stack = []
@@ -44,7 +44,7 @@ def size(node):
 
 a = genrateTree(arr)
 display(a)
-print(size(a))
+#print(size(a))
 
 
 def max_val(node):
@@ -57,7 +57,7 @@ def max_val(node):
     m = max(node.data,m)
     return m
 
-print(max_val(a))
+#print(max_val(a))
 
 def height(node):
     m = -1      #0 for node, -1 for edges
@@ -69,7 +69,7 @@ def height(node):
     m += 1
     return m
 
-print(height(a))
+#print(height(a))
     
 def traversal(node):
 
@@ -90,7 +90,7 @@ def level_order_traversal(node):
         for i in v.children:
             q.append(i)
 
-level_order_traversal(a)
+#level_order_traversal(a)
 
 print()
 
@@ -110,7 +110,7 @@ def line_wise(node):
             q = cq
             cq  =[]
 
-line_wise(a)
+#line_wise(a)
 
 #Alternate
 def line_wise(node):
@@ -130,7 +130,7 @@ def line_wise(node):
         
             
 
-line_wise(a)
+#line_wise(a)
 def zig_zag(node):
     s = [node]
     cs =[]
@@ -158,3 +158,40 @@ def zig_zag(node):
 
 #zig_zag(a)
 
+def mirror_tree(node):
+    
+    for i in node.children:
+        mirror_tree(i)
+    node.children.reverse()
+
+#mirror_tree(a)
+#display(a)
+
+def remove_leaves(node):
+    for i in range(len(node.children)-1,-1,-1):
+        child = node.children[i]
+        if len(child.children) == 0:
+            node.children.remove(child)
+    
+    for i in node.children:
+        remove_leaves(i)
+    
+#remove_leaves(a)
+#display(a)
+def getTail(node):
+    while len(node.children) == 1:
+        node = node.children[0]
+    return node
+
+def linearize(node):
+    for i in node.children:
+        linearize(i)
+
+    while len(node.children) > 1:
+        v = node.children.pop()
+        a = getTail(node.children[-1])
+        a.children.append(v)
+
+linearize(a)
+display(a)
+    
