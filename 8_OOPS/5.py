@@ -192,6 +192,15 @@ def linearize(node):
         a = getTail(node.children[-1])
         a.children.append(v)
 
-linearize(a)
-display(a)
+#linearize(a)
+#display(a)
     
+def find(node,x):
+    if node.data == x:
+        return True
+    for i in node.children:
+        flag = find(i,x)
+        if flag:
+            return True
+    return False    
+print(find(a,99))
