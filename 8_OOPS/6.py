@@ -5,7 +5,7 @@ class Node:
         self.data = value
         self.children = []
 arr = [10,20,50,-1,60,-1,-1,30,70,-1,80,110,-1,120,-1,-1,90,-1,-1,40,150,-1,-1,-1]
-sarr = [10,20,-1,30,50,-1,60,-1,-1,40,-1,-1]
+sarr = [10,20,-1,30,-50,-1,-60,-1,-1,40,-1,-1]
 
 def GenricTree(arr):
     
@@ -127,4 +127,50 @@ def kth_largest(node,k):
         f = float('-inf') 
     return res
 
-print(kth_largest(a,3))
+#print(kth_largest(a,3))
+
+s = float('-inf')
+n = None
+def max_sum_sub_tree(node):
+    global s
+    global n 
+    node_sum = 0
+    for i in node.children:
+        n_sum = max_sum_sub_tree(i)
+        node_sum += n_sum
+    
+    node_sum += node.data
+    #print(node.data, '=', node_sum)
+    if s < node_sum:
+        n = node.data
+        s = node_sum
+    return node_sum
+
+z = [10,20,-50,-1,-60,-1,-1,30,-70,-1,80,-110,-1,120,-1,-1,90,-1,-1,40,-100,-1,-1,-1]
+'''b = GenricTree(z)
+display(b)
+max_sum_sub_tree(b)
+print(n,'@',s)'''
+
+dia = 0
+def cal_diameter(node):
+    global dia
+    lh = -1
+    slh = -1
+    for i in node.children:
+        ch = cal_diameter(i)
+        if ch > lh:
+            slh = lh
+            lh = ch
+            
+        elif ch > slh:
+            slh = ch
+    
+    cand = lh + slh + 2
+    if cand > dia:
+        dia = cand
+    lh += 1
+    
+    return lh
+cal_diameter(a)
+print(dia)
