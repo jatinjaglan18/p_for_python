@@ -170,7 +170,52 @@ def cal_diameter(node):
     if cand > dia:
         dia = cand
     lh += 1
-    
     return lh
-cal_diameter(a)
-print(dia)
+
+'''cal_diameter(a)
+print(dia)'''
+
+#recursion
+pre = []
+post = []
+def pre_post(node):
+    global pre
+    global post
+    pre.append(node.data)
+    for i in node.children:
+        pre_post(i)
+    post.append(node.data)
+
+#Iterative 
+
+def pre_post(node):
+    stack =[] #[node, state]
+    pre = []
+    post = []
+    
+    stack.append([node,-1])
+
+    while len(stack) > 0:
+        top = stack[-1]
+        print(top[0].data, top[1])
+        if top[1] == -1:
+            pre.append(top[0].data)
+            top[1] += 1
+
+        elif top[1] == len(top[0].children):
+            
+            post.append(top[0].data)
+            stack.pop()
+
+        else:
+            child = [top[0].children[top[1]],-1]    
+            stack.append(child)
+            top[1] += 1
+
+    return pre, post
+
+
+pre, post = pre_post(a)
+print(pre)
+print(post)
+
