@@ -192,7 +192,20 @@ def linearize(node):
         a = getTail(node.children[-1])
         a.children.append(v)
 
-#linearize(a)
+def linearize1(node):
+    if len(node.children) == 0:
+        return node
+
+    ltail = linearize1(node.children[-1])
+    while len(node.children) > 1:
+        l = node.children.pop()
+        sltail = linearize1(node.children[-1])
+        sltail.children.append(l)
+    
+    return ltail
+
+
+#linearize1(a)
 #display(a)
     
 def find(node,x):
