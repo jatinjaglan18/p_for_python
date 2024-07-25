@@ -85,8 +85,46 @@ def pre_suc(node,data):
     for i in node.children:
         pre_suc(i,data)
 
-pre_suc(a,150)
+'''pre_suc(a,150)
 print(pre)
-print(suc)
+print(suc)'''
+
+ceil = float('inf')
+floor = float('-inf')
+
+def ceil_floor(node,data):
+    global ceil
+    global floor
+
+    if node.data < data and node.data > floor:
+        floor = node.data
+        
+    if node.data > data and node.data < ceil:
+        ceil = node.data
+    
+    for i in node.children:
+        ceil_floor(i,data)
 
 
+'''ceil_floor(a,200)
+print(ceil)
+print(floor)'''
+
+f = float('-inf')
+def c_floor(node,data):
+    global f
+    if node.data > f and node.data < data:
+        f = node.data
+    for i in node.children:
+        c_floor(i,data)
+
+def kth_largest(node,k):
+    global f
+    res = float('inf')
+    for i in range(k):
+        c_floor(node,res)
+        res = f
+        f = float('-inf') 
+    return res
+
+print(kth_largest(a,3))
