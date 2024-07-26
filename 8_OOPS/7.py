@@ -110,3 +110,24 @@ def height(node):
     return ht
 
 print(height(a))
+
+pre = []
+In = []
+post = []
+def pre_in_post(node):
+    global pre
+    global In
+    global post
+    if node == None:
+        return
+    
+    pre.append(node.data)
+    pre_in_post(node.left)
+    In.append(node.data)
+    pre_in_post(node.right)
+    post.append(node.data)
+
+pre_in_post(a)
+print(pre)
+print(In)
+print(post)
