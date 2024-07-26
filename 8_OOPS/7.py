@@ -180,6 +180,7 @@ def level_order_travarsal(node):
             print()
             q = cq
             cq = [] 
+
 #Alternate
 def level_order_travarsal(node):
     q = [node]
