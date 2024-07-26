@@ -160,12 +160,12 @@ def pre_in_post_iter(node):
             
     return pre, In, post
 
-pre, In , post = pre_in_post_iter(a)
+'''pre, In , post = pre_in_post_iter(a)
 print(pre)
 print(In)
-print(post)
+print(post)'''
 
-'''def level_order_travarsal(node):
+def level_order_travarsal(node):
     q = [node]
     cq = []
     while len(q) != 0 or len(cq) != 0:
@@ -180,4 +180,19 @@ print(post)
             print()
             q = cq
             cq = [] 
-level_order_travarsal(a)'''
+#Alternate
+def level_order_travarsal(node):
+    q = [node]
+    while q:
+        s = len(q)
+        for i in range(s):
+            v = q.pop(0)
+            print(v.data, end = ' ')
+            if v.left != None:
+                q.append(v.left)
+            if v.right != None:
+                q.append(v.right)
+
+        print()
+
+level_order_travarsal(a)
