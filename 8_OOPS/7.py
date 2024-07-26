@@ -73,7 +73,7 @@ def size(node):
     rs = size(node.right)
     s = ls + rs + 1
     return s 
-print(size(a))
+#print(size(a))
 
 def total_sum(node):
     if node == None:
@@ -82,7 +82,7 @@ def total_sum(node):
     rs = total_sum(node.right)
     s = ls + rs + node.data
     return s
-print(total_sum(a))
+#print(total_sum(a))
 
 def max_val(node):
     #m = float('-inf')
@@ -96,7 +96,7 @@ def max_val(node):
 
     return m
 
-print(max_val(a))
+#print(max_val(a))
 
 def height(node):
     if node == None:
@@ -109,8 +109,9 @@ def height(node):
 
     return ht
 
-print(height(a))
+#print(height(a))
 
+#recursive pre, in, post order
 pre = []
 In = []
 post = []
@@ -127,7 +128,56 @@ def pre_in_post(node):
     pre_in_post(node.right)
     post.append(node.data)
 
-pre_in_post(a)
+'''pre_in_post(a)
+print(pre)
+print(In)
+print(post)'''
+
+#iterative pre, in, post
+def pre_in_post_iter(node):
+    pre = ''
+    In = ''
+    post = ''
+
+    stack = []
+    stack.append([node,-1])
+
+    while len(stack) != 0:
+        top = stack[-1]
+        if top[1] == -1:
+            pre += str(top[0].data) + ' '
+            top[1] += 1
+            if top[0].left != None:
+                stack.append([top[0].left, -1])
+        elif top[1] == 0:
+            In += str(top[0].data) + ' '
+            top[1] += 1
+            if top[0].right != None:
+                stack.append([top[0].right, -1])
+        else:
+            post += str(top[0].data) + ' '
+            stack.pop()
+            
+    return pre, In, post
+
+pre, In , post = pre_in_post_iter(a)
 print(pre)
 print(In)
 print(post)
+
+'''def level_order_travarsal(node):
+    q = [node]
+    cq = []
+    while len(q) != 0 or len(cq) != 0:
+        v = q.pop(0)
+        print(v.data, end = ' ')
+        if v.left != None:
+            cq.append(v.left)
+        if v.right != None:
+            cq.append(v.right)
+
+        if len(q) == 0:
+            print()
+            q = cq
+            cq = [] 
+level_order_travarsal(a)'''
