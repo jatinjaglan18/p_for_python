@@ -65,3 +65,48 @@ def display(node):
     display(node.right)
 
 display(a)
+
+def size(node):
+    if node == None:
+        return 0
+    ls = size(node.left)
+    rs = size(node.right)
+    s = ls + rs + 1
+    return s 
+print(size(a))
+
+def total_sum(node):
+    if node == None:
+        return 0
+    ls = total_sum(node.left)
+    rs = total_sum(node.right)
+    s = ls + rs + node.data
+    return s
+print(total_sum(a))
+
+def max_val(node):
+    #m = float('-inf')
+    if node == None:
+        return float('-inf')
+
+    lm = max_val(node.left)
+    rm = max_val(node.right)
+    
+    m = max(lm,rm,node.data)
+
+    return m
+
+print(max_val(a))
+
+def height(node):
+    if node == None:
+        return -1 #-1 for edeges 0 for nodes 
+    
+    lh = height(node.left)
+    rh = height(node.right)
+
+    ht = max(lh,rh) + 1
+
+    return ht
+
+print(height(a))
