@@ -222,27 +222,27 @@ def find(node,x):
 #print(find(a,30))
 #print(arr)
 
-'''def node_to_root(node,x):
+def node_to_root(node,x):
     if node == None:
         return []
     
     elif node.data == x:
-        arr = [node.data]
+        arr = [node]
         return arr
     
     lc = node_to_root(node.left,x)
     if len(lc) != 0:
-        lc.append(node.data)
+        lc.append(node)
         return lc
     
     rc = node_to_root(node.right,x)
     if len(rc) != 0:
-        rc.append(node.data)
+        rc.append(node)
         return rc
     
     return []
 
-print(node_to_root(a,30))'''
+#print(node_to_root(a,30))
 
 #Iterative
 def print_kth_level(node,k):
@@ -272,4 +272,24 @@ def print_kth_level(node,k):
     print_kth_level(node.left, k - 1)
     print_kth_level(node.right, k - 1)
 
-print_kth_level(a,1)
+#print_kth_level(a,1)
+
+def k_levels_far(node,x,k):
+    def print_kth_level(node,k,blocker):        #blocker = don't allow to print the nodes which are below the previous node
+        if node == None or k < 0 or node == blocker:
+            return 
+        if k == 0:
+            print(node.data, end = ' ')
+        print_kth_level(node.left, k - 1, blocker)
+        print_kth_level(node.right, k - 1, blocker)
+
+    path = node_to_root(node,x)         #node
+    for i in range(len(path)):
+        if i == 0:
+            blocker = None
+        else:
+            blocker = path[i-1]
+        print_kth_level(path[i],k-i,blocker)
+
+k_levels_far(a,75,2)
+     
