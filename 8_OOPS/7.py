@@ -322,3 +322,15 @@ def left_cloned(node):
 
 left_cloned(a)
 display(a)
+
+def left_cloned_to_normal(node):
+    if node == None:
+        return
+
+    node.left = node.left.left
+
+    left_cloned_to_normal(node.left)
+    left_cloned_to_normal(node.right)
+
+left_cloned_to_normal(a)
+display(a)
