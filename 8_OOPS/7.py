@@ -381,3 +381,20 @@ def cal_diameter(node):
     
 print(cal_diameter(a))
 
+#
+def cal_diameter1(node):
+    if node == None:
+        arr = [-1,0]
+        return arr
+    
+    l = cal_diameter1(node.left)
+    r = cal_diameter1(node.right)
+
+
+    ht = max(l[0],r[0]) + 1
+    f = l[0] + r[0] + 2
+    dia = max(f,l[1],r[1])
+
+    return [ht,dia]
+
+print(cal_diameter1(a)[1])
