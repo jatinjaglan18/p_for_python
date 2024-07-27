@@ -348,4 +348,20 @@ def single_child(node,parent):
     single_child(node.left,node)
     single_child(node.right,node)
 
-single_child(a,None)
+#single_child(a,None)
+
+def remove_leaves(node):
+    if node == None:
+        return
+    
+    if node.left == None and node.right == None:
+        return None
+
+    node.left = remove_leaves(node.left)
+    node.right = remove_leaves(node.right)
+    
+    return node
+    
+remove_leaves(a)
+display(a)
+
