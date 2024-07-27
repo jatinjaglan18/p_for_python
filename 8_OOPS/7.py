@@ -219,9 +219,8 @@ def find(node,x):
 
     return False
 
-
-print(find(a,30))
-print(arr)
+#print(find(a,30))
+#print(arr)
 
 '''def node_to_root(node,x):
     if node == None:
@@ -243,5 +242,34 @@ print(arr)
     
     return []
 
-
 print(node_to_root(a,30))'''
+
+#Iterative
+def print_kth_level(node,k):
+    q = [node]
+
+    while q:
+        k -= 1
+        s = len(q)
+        for i in range(s):
+            v = q.pop(0)
+            if k == -1:
+                print(v.data, end=' ')
+            if v.left != None:
+                q.append(v.left)
+            
+            if v.right != None:
+                q.append(v.right)
+        if k == -1:
+            break
+    
+#recursive
+def print_kth_level(node,k):
+    if node == None or k < 0:
+        return 
+    if k == 0:
+        print(node.data, end = ' ')
+    print_kth_level(node.left, k - 1)
+    print_kth_level(node.right, k - 1)
+
+print_kth_level(a,1)
