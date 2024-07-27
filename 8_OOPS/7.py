@@ -362,6 +362,22 @@ def remove_leaves(node):
     
     return node
     
-remove_leaves(a)
-display(a)
+#remove_leaves(a)
+#display(a)
+
+def cal_diameter(node):
+    
+    if node == None:
+        return -1
+
+    lh = cal_diameter(node.left)
+    rh = cal_diameter(node.right)
+
+    ht = height(node.left) + height(node.right) + 2
+
+    dia = max(ht, lh, rh)
+    
+    return dia
+    
+print(cal_diameter(a))
 
