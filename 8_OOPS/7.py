@@ -307,4 +307,18 @@ def root_to_leaf(node, path, s, l, h):
     root_to_leaf(node.left, path+ ' ' +str(node.data), s + node.data, l ,h)
     root_to_leaf(node.right, path+ ' ' +str(node.data), s + node.data, l ,h)
 
-root_to_leaf(a,'',0,10,150)
+#root_to_leaf(a,'',0,10,150)
+
+def left_cloned(node):
+    if node == None:
+        return
+    
+    new_node = Node(node.data)
+    new_node.left = node.left
+    node.left = new_node
+
+    left_cloned(node.left.left)
+    left_cloned(node.right)
+
+left_cloned(a)
+display(a)
