@@ -291,5 +291,20 @@ def k_levels_far(node,x,k):
             blocker = path[i-1]
         print_kth_level(path[i],k-i,blocker)
 
-k_levels_far(a,75,2)
+#k_levels_far(a,75,2)
      
+def root_to_leaf(node, path, s, l, h):
+    if node == None:
+        return 
+    
+    if node.left == None and node.right == None:
+        s += node.data
+        if s > l and s < h:
+            print(path + ' ' + str(node.data))
+
+        return 
+    
+    root_to_leaf(node.left, path+ ' ' +str(node.data), s + node.data, l ,h)
+    root_to_leaf(node.right, path+ ' ' +str(node.data), s + node.data, l ,h)
+
+root_to_leaf(a,'',0,10,150)
