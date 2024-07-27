@@ -196,4 +196,52 @@ def level_order_travarsal(node):
 
         print()
 
-level_order_travarsal(a)
+#level_order_travarsal(a)
+
+arr = []
+def find(node,x):
+    global arr
+    if node == None:
+        return False
+    
+    if node.data == x:
+        arr.append(node.data)
+        return True
+    
+    fl = find(node.left,x)
+    if fl:
+        arr.append(node.data)
+        return True
+    fr = find(node.right,x)
+    if fr:
+        arr.append(node.data)
+        return True
+
+    return False
+
+
+print(find(a,30))
+print(arr)
+
+'''def node_to_root(node,x):
+    if node == None:
+        return []
+    
+    elif node.data == x:
+        arr = [node.data]
+        return arr
+    
+    lc = node_to_root(node.left,x)
+    if len(lc) != 0:
+        lc.append(node.data)
+        return lc
+    
+    rc = node_to_root(node.right,x)
+    if len(rc) != 0:
+        rc.append(node.data)
+        return rc
+    
+    return []
+
+
+print(node_to_root(a,30))'''
