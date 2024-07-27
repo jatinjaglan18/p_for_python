@@ -320,8 +320,8 @@ def left_cloned(node):
     left_cloned(node.left.left)
     left_cloned(node.right)
 
-left_cloned(a)
-display(a)
+#left_cloned(a)
+#display(a)
 
 def left_cloned_to_normal(node):
     if node == None:
@@ -332,5 +332,20 @@ def left_cloned_to_normal(node):
     left_cloned_to_normal(node.left)
     left_cloned_to_normal(node.right)
 
-left_cloned_to_normal(a)
-display(a)
+#left_cloned_to_normal(a)
+#display(a)
+
+def single_child(node,parent):
+    if node == None:
+        return
+    
+    if parent != None and parent.left != None and parent.right == None:
+        print(node.data)
+
+    elif parent != None and parent.left == None and parent.right != None:
+        print(node.data)
+
+    single_child(node.left,node)
+    single_child(node.right,node)
+
+single_child(a,None)
