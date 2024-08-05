@@ -14,6 +14,5 @@ def binarySearch(arr,x):
             left = mid + 1
         else:
             return mid
-    
     return -1
 print(binarySearch(arr,x))
