@@ -21,7 +21,6 @@ while i < len(mat) and j > -1:
     elif f < mat[i][j]:
         j -= 1
     else:
-        print(i)
         i += 1
 else:
     print('Not Found')
