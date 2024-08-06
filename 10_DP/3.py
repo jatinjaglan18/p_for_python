@@ -1,4 +1,4 @@
-#Climb Stairs down using Tabulation
+#Climb Stairs using Tabulation
 n = int(input())
 arr = [int(input()) for i in range(n)]
 
