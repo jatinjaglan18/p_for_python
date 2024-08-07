@@ -123,6 +123,33 @@ def isbal(node):
         flag = False
     return flag, ht        
 
-print(isbal(root)[0])
-print(flag)
-balanced(root)
+#print(isbal(root)[0])
+#print(flag)
+#balanced(root)
+
+n = None
+size = 0
+def largestBST(node):
+    global n
+    global size
+    if node == None:
+        return (True, float('inf'), float('-inf'), 0)
+    
+    isbstl, lmin, lmax, ls =largestBST(node.left)
+    isbstr, rmin, rmax, rs = largestBST(node.right)
+
+    ns = ls + rs + 1
+    nmin = min(node.data,lmin,rmin)
+    nmax = max(node.data,lmax,rmax)
+
+    if isbstl and isbstr and node.data >= lmax and node.data <= rmin:
+        if size < ns:
+            size = ns
+            n = node.data
+
+        return (True, nmin, nmax, ns)
+    else:
+        return (False, nmin, nmax, ns)
+
+largestBST(root)
+print(n,'@',size)
