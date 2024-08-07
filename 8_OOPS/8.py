@@ -93,5 +93,36 @@ def isbinary(node):
     else:
         return (False, nmin, nmax)
     
-isbst, min, max = isbinary(root)
-print(isbst)
+#isbst, min, max = isbinary(root)
+#print(isbst)
+
+#balanced Binary Tree
+flag = True
+def balanced(node):
+    global flag
+    if node == None:
+        return -1
+
+    lh = balanced(node.left)
+    rh = balanced(node.right)
+
+    ht = max(lh,rh) + 1
+    if abs(lh-rh) > 1:
+        flag = False
+    return ht
+
+def isbal(node):
+    if node == None:
+        return (True,-1)
+
+    flag, lh = isbal(node.left)
+    flag, rh = isbal(node.right)
+
+    ht = max(lh,rh) + 1
+    if abs(lh-rh) > 1:
+        flag = False
+    return flag, ht        
+
+print(isbal(root)[0])
+print(flag)
+balanced(root)
