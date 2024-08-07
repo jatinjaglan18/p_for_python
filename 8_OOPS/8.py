@@ -73,6 +73,25 @@ def tilt_of_tree(node):
     tilt += abs(l-r)
     return s 
 
-print(tilt_of_tree(root))
-print(tilt)
+#print(tilt_of_tree(root))
+#print(tilt)
 
+def isbinary(node):
+    
+    if node == None:
+        return (True, float('inf'), float('-inf'))   #isbst,  minimum,  maximum
+
+    lbst, lmin, lmax  = isbinary(node.left)
+    rbst, rmin, rmax = isbinary(node.right)
+    
+
+    nmin = min(node.data,lmin,rmin)
+    nmax = max(node.data,lmax,rmax)
+
+    if lbst and rbst and node.data >= lmax and node.data <= rmin:
+        return (True , nmin, nmax)
+    else:
+        return (False, nmin, nmax)
+    
+isbst, min, max = isbinary(root)
+print(isbst)
