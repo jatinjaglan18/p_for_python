@@ -18,7 +18,7 @@ def min_cost(maze, sr,sc,dr,dc,c,path):
         min_cost(maze,sr+1, sc, dr, dc, c + maze[sr][sc],path+'v')
 
     
-min_cost(maze,0,0,3,3,0,'')
+min_cost(maze,0,0,n-1,m-1,0,'')
 print(cost)
 
 #Dynamic Programming
