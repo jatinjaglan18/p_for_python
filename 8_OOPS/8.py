@@ -1,45 +1,26 @@
-#Binary Tree
-
+#Binary Search Tree
 class Node:
     def __init__(self, data = None , left = None, right = None):
         self.data = data
         self.left = left
         self.right = right
         
-arr = [50,25,12,None,None,37,30,None,None,None,75,62,None,70,None,None,87,None,None]
-def genrateTree(arr):
-    stack = []
-    root = Node(arr[0])
-    stack.append([root, 1])
+arr = [12, 25, 37, 50, 62, 75, 87]
+def genrateTree(arr,l,h):
 
-    idx = 0
-    while stack:
-        top = stack[-1]
-        if top[1] == 1:
-            idx += 1
-            if arr[idx] != None:
-                new_node = Node(arr[idx])
-                top[0].left = new_node
-                top[1] += 1
-                stack.append([new_node,1])
+    if l > h:
+        return None
+    
+    mid = (l + h) // 2
+    
+    val = arr[mid]
+    lc = genrateTree(arr,l,mid-1)
+    rc = genrateTree(arr,mid+1,h)
 
-            else:
-                top[1] += 1
-        elif top[1] == 2:
-            idx += 1
-            if arr[idx] != None:
-                new_node = Node(arr[idx])
-                top[0].right = new_node
-                top[1] += 1 
-                stack.append([new_node,1])
-            else:
-                top[1] += 1
-        else:
-            stack.pop()
-
+    root = Node(val, lc, rc)
     return root
 
-root = genrateTree(arr)
+root = genrateTree(arr,0,len(arr)-1)
 def display(node):
     if node == None:
         return 
@@ -60,23 +41,8 @@ def display(node):
 
 display(root)
 
-#tilt of a binary tree
-tilt = 0
-def tilt_of_tree(node):
-    global tilt
-    if node == None:
-        return 0
 
-    l = tilt_of_tree(node.left)
-    r = tilt_of_tree(node.right)
-    s = l + r + node.data
-    tilt += abs(l-r)
-    return s 
-
-#print(tilt_of_tree(root))
-#print(tilt)
-
-def isbinary(node):
+'''ef isbinary(node):
     
     if node == None:
         return (True, float('inf'), float('-inf'))   #isbst,  minimum,  maximum
@@ -152,4 +118,4 @@ def largestBST(node):
         return (False, nmin, nmax, ns)
 
 largestBST(root)
-print(n,'@',size)
+print(n,'@',size)'''
