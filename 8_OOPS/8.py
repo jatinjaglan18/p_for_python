@@ -41,6 +41,66 @@ def display(node):
 
 display(root)
 
+#size
+def size(node):
+    if node == None:
+        return 0
+
+    ls = size(node.left)
+    rs = size(node.right)
+    s = ls + rs + 1
+    return s  
+
+print(size(root))
+
+#sum
+def sum_bst(node):
+    if node == None:
+        return 0
+    lc = sum_bst(node.left)
+    rc = sum_bst(node.right)
+
+    s = lc+rc+node.data
+    return s
+
+print(sum_bst(root))
+
+#max of bst
+def max_bst(node):
+    if node.right == None:
+        return node.data
+    return max_bst(node.right)
+
+print(max_bst(root))
+
+#min of bst
+def min_bst(node):
+    if node.left == None:
+        return node.data
+    return min_bst(node.left)
+
+print(min_bst(root))
+
+#find
+def find_bst(node,x):
+    if node == None:
+        return False
+    if x < node.data:
+        return find_bst(node.left,x)
+    elif x > node.data:
+        return find_bst(node.right,x)
+    else:
+        return True
+
+print(find_bst(root,25))
+
+
+
+
+
+
+
+
 
 '''ef isbinary(node):
     
