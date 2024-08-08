@@ -397,4 +397,20 @@ def cal_diameter1(node):
 
     return [ht,dia]
 
-print(cal_diameter1(a)[1])
+#print(cal_diameter1(a)[1])
+
+#tilt of a binary tree
+tilt = 0
+def tilt_of_tree(node):
+    global tilt
+    if node == None:
+        return 0
+
+    l = tilt_of_tree(node.left)
+    r = tilt_of_tree(node.right)
+    s = l + r + node.data
+    tilt += abs(l-r)
+    return s 
+
+#print(tilt_of_tree(root))
+#print(tilt)
