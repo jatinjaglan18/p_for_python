@@ -241,12 +241,108 @@ def print_range(node,l,h):
     elif node.data < l:
         print_range(node.right,l,h)
 
-print_range(root,27,72)
+#print_range(root,27,72)
 
+#target sum pair
+#time -> o(nlogn) space -> o(h)
+#using find
+def tar_sum(root, node,tar):
+    if node == None:
+        return
+    tar_sum(root,node.left,tar)
+    pair = tar - node.data
+    if node.data < pair:
+        if find_bst(root,pair):
+            print(node.data, '-', pair)
+    tar_sum(root,node.right,tar)
 
+#tar_sum(root,root,100)
 
+#using arr
+# time -> o(n) space -> o(n)
+def fill_arr(node,arr):
+    if node == None:
+        return 
+    fill_arr(node.left,arr)
+    arr.append(node.data)
+    fill_arr(node.right,arr)
 
+arr = []   
+fill_arr(root,arr)
+    
+tar = 100
+i = 0
+j = len(arr)-1
+while i < j:
+    if arr[i] + arr[j] < tar:
+        i += 1
+    elif arr[i] + arr[j] > tar:
+        j -= 1
+    else:
+        print(arr[i],arr[j])
+        i += 1
+        j -= 1
 
+#time -> o(n) space -> o(h)
+def best_approach(node,tar):
+    if node == None:
+        return
+    
+    ls = [[node,-1]]
+    rs = [[node,-1]]
+
+    ln = inorder(ls)
+    rn = revorder(rs)
+
+    while ln.data < rn.data:
+        if ln.data + rn.data > tar:
+            rn = revorder(rs)
+        elif ln.data + rn.data < tar:
+            ln = inorder(ls)
+        
+        else:
+            print(ln.data,rn.data)
+            ln = inorder(ls)
+            rn = inorder(rs)
+
+def inorder(ls):
+    while len(ls) > 0:
+        top = ls[-1]
+        if top[1] == -1:
+            if top[0].left != None:
+                ls.append([top[0].left,-1])
+            top[1] += 1
+        elif top[1] == 0:
+            if top[0].right != None:
+                ls.append([top[0].right,-1])
+            top[1] += 1
+            return top[0]
+        else:
+            ls.pop()
+    
+    return None
+
+   
+def revorder(rs):
+      
+    while len(rs) > 0:
+        top = rs[-1]
+        if top[1] == -1:
+            if top[0].right != None:
+                rs.append([top[0].right,-1])
+            top[1] += 1
+
+        elif top[1] == 0:
+            if top[0].left != None:
+                rs.append([top[0].left, -1])
+            top[1] += 1
+            return top[0]
+            
+        else:
+            rs.pop()
+
+    return None
+best_approach(root,100)
 
 
 
