@@ -153,9 +153,24 @@ def remove_bst(node,x):
 
     return node
 
-remove_bst(root,30)
-display(root)
+#remove_bst(root,30)
+#display(root)
 
+#replace with sum of largest
+s = 0
+def replace_sum_largest(node):
+    global s
+    if node == None:
+        return
+    
+    replace_sum_largest(node.right)
+    temp = node.data
+    node.data = s
+    s += temp 
+    replace_sum_largest(node.left)
+    
+replace_sum_largest(root)
+display(root)
 
 
 
