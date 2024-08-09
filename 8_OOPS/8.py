@@ -191,8 +191,8 @@ def node_to_root(node,x):
     else:
         arr = [x]
         return arr
-print(node_to_root(root,30))
-print(node_to_root(root,25))
+#print(node_to_root(root,30))
+#print(node_to_root(root,25))
 
 def LCA(node,x,y):
     n1 = node_to_root(node,x)
@@ -208,7 +208,7 @@ def LCA(node,x,y):
     j += 1
     return(n1[i])
     
-print(LCA(root,30,25))
+#print(LCA(root,30,25))
 
 #using BST Property
 def LCA(node,x,y):
@@ -223,8 +223,25 @@ def LCA(node,x,y):
     else:
         return node.data
     
-print(LCA(root,30,25))
+#print(LCA(root,30,25))
 
+#print values of a range
+def print_range(node,l,h):
+    if node == None:
+        return
+    
+    if node.data >= l and node.data <= h:
+        print_range(node.left,l,h)
+        print(node.data)
+        print_range(node.right,l,h)
+    
+    elif node.data > h:
+        print_range(node.left,l,h)
+    
+    elif node.data < l:
+        print_range(node.right,l,h)
+
+print_range(root,27,72)
 
 
 
