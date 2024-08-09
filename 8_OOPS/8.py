@@ -163,14 +163,67 @@ def replace_sum_largest(node):
     if node == None:
         return
     
-    replace_sum_largest(node.right)
+    replace_sum_largest(node.right)     #right -> node -> left bcuz -> larger values
+    
     temp = node.data
     node.data = s
     s += temp 
+
     replace_sum_largest(node.left)
     
-replace_sum_largest(root)
-display(root)
+#replace_sum_largest(root)
+#display(root)
+
+#Lowest common ancestor
+
+# using node to root path
+def node_to_root(node,x):
+    if node == None:
+        return []
+    if x < node.data:
+        arr = node_to_root(node.left,x)
+        arr.append(node.data)
+        return arr
+    elif x > node.data:
+        arr = node_to_root(node.right,x)
+        arr.append(node.data)
+        return arr
+    else:
+        arr = [x]
+        return arr
+print(node_to_root(root,30))
+print(node_to_root(root,25))
+
+def LCA(node,x,y):
+    n1 = node_to_root(node,x)
+    n2 = node_to_root(node,y)
+
+    i = len(n1)-1
+    j = len(n2)-1
+    
+    while i >= 0 and j >= 0 and n1[i] == n2[j] :
+        i -= 1
+        j -= 1
+    i += 1
+    j += 1
+    return(n1[i])
+    
+print(LCA(root,30,25))
+
+#using BST Property
+def LCA(node,x,y):
+    if node == None:
+        return
+    
+    if node.data > x and node.data > y:
+        return LCA(node.left,x,y)
+    elif node.data < x and node.data < y:
+        return LCA(node.right,x,y)
+    
+    else:
+        return node.data
+    
+print(LCA(root,30,25))
 
 
 
