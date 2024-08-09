@@ -344,18 +344,7 @@ def revorder(rs):
     return None
 best_approach(root,100)
 
-
-
-
-
-
-
-
-
-
-
-
-'''ef isbinary(node):
+def isbinary(node):
     
     if node == None:
         return (True, float('inf'), float('-inf'))   #isbst,  minimum,  maximum
@@ -431,4 +420,4 @@ def largestBST(node):
         return (False, nmin, nmax, ns)
 
 largestBST(root)
-print(n,'@',size)'''
+print(n,'@',size)
