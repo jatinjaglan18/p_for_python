@@ -1,5 +1,4 @@
 #Coin Change Permutations
-
 s = int(input('size: '))
 arr = [int(input()) for i in range(s)]
 tar = int(input('Target: '))
