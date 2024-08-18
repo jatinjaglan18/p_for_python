@@ -56,9 +56,14 @@ def small_large_ceil_floor(graph,s,d,path,w,v):
 
     if s == d:
         pa = path + str(d)
-        if pq.qsize() == k:
-            pq.get()
-        pq.put((w,pa))
+        if pq.qsize() < k:
+            pq.put((w,pa))
+        else:
+            val = pq.get()
+            if w > val[0]:
+                pq.put((w,pa))
+            else:
+                pq.put(val)
         #small path
         if w < sw:
             sw = w
